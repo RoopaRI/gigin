@@ -3,9 +3,12 @@ import axios from "axios";
 import "./PetList.css";
 import {useState, useEffect} from "react";
 import {Link} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import SearchForm from "../SearchForm/SearchFrom";
 
 export default function PetList(){
     const [petList, setPetList] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(()=>{
         const fetchData = async ()=> {
@@ -21,13 +24,17 @@ export default function PetList(){
     }, []);
 
     return(
-        <div className="petsList">
+        <>
+            <div>
+                <SearchForm List={petList}/>
+            </div>
+            <div className="petsList">
                 {petList ? (petList.map((pet)=>(
                     <div className="petList">
-                        <img className="petImg" src={pet.images[0]} alt={pet.name}/>
+                        <Link to="/petDetails" ><img className="petImg" src={pet.images[0]} alt={pet.name}/></Link>
                         <h2>Name: {pet.name}</h2>
                         <h2>Breed: {pet.breed}</h2>
-                        <Link to="/petDetails">PetDetails</Link>
+                        
                     </div>
                     
                 ))): (
@@ -35,6 +42,7 @@ export default function PetList(){
                 )}
             
             
-        </div>
+        </div>      
+        </>
     );
 }
