@@ -1,0 +1,17 @@
+.petsList{
+    display: flex;
+    flex-wrap:wrap;
+    gap:10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.petList{
+    display: flex;
+    flex-direction: column;
+}
+
+.petImg{
+    height: 400px;
+    width:400px;
+}

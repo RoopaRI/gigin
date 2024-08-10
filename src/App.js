@@ -1,10 +1,11 @@
-
+import React from "react";
 import './App.css';
+import PetList from "./components/PetList/PetList";
 
 function App() {
   return (
     <div className="App">
-      <h1>Pets</h1>
+      <PetList/>
     </div>
   );
 }
